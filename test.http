@@ -1,0 +1,29 @@
+//GET List student
+curl --location 'http://localhost:8085/students' \
+--header 'Content-Type: application/json' \
+--data ''
+
+//POST Create student
+curl --location 'http://localhost:8085/students/create' \
+--header 'Content-Type: application/json' \
+--data '{"ID":"F004", "name":"Grogu Stein", "age":5, "grade":9}'
+
+//GET ID Student
+curl --location 'http://localhost:8085/students/get/F004' \
+--header 'Content-Type: application/json' \
+--data ''
+
+//GET Age Student
+curl --location --request GET 'http://localhost:8085/students/20' \
+--header 'Content-Type: application/json' \
+--data ''
+
+//POST Update Student
+curl --location 'http://localhost:8085/students/update/F004' \
+--header 'Content-Type: application/json' \
+--data '{"age":30, "ID":"F004"}'
+
+//POST Delete Student
+curl --location --request POST 'http://localhost:8085/students/delete/F004' \
+--header 'Content-Type: application/json' \
+--data ''
