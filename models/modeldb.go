@@ -3,25 +3,34 @@ package models
 import (
 	"database/sql"
 	"fmt"
+	"os"
 
 	_ "github.com/lib/pq"
 )
 
-const (
+/*const (
 	host     = "localhost"
 	port     = 5432
-	user     = "username"
-	password = "password"
+	user     = "amonzark"
+	password = "nuansa12"
 	dbname   = "postgres"
-)
+)*/
 
 // connection to DB
 func connect() (*sql.DB, error) {
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname)
+	dbuser := os.Getenv("DB_USER")
+	dbname := os.Getenv("DB_NAME")
+	dbhost := os.Getenv("DB_HOST")
+	dbpass := os.Getenv("DB_PASS")
+	dbport := os.Getenv("DB_PORT")
 
-	db, err := sql.Open("postgres", psqlInfo)
+	psqlInfo_docker := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", dbuser, dbpass, dbhost, dbport, dbname)
+
+	/*psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
+	"password=%s dbname=%s sslmode=disable",
+	host, port, user, password, dbname)*/
+
+	db, err := sql.Open("postgres", psqlInfo_docker)
 	if err != nil {
 		return nil, err
 	}

@@ -14,5 +14,5 @@ func main() {
 	router.POST("/students/update/:id", controllers.Updatestudentsbyid) //update by id
 	router.POST("/students/delete/:id", controllers.Deletestudentsbyid) //delete by id
 	router.GET("/students/getby/:age", controllers.Getstudentsbyage)    //get by age
-	router.Run("localhost:8085")
+	router.Run("0.0.0.0:8085")
 }
