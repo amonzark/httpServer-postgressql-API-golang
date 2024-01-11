@@ -7,7 +7,7 @@ docker build -t http-server:v1 .
 
 create docker container
 
-docker run -d -p 8085:8085 --name http-server-golang -e DB_USER=amonzark -e DB_PASS=nuansa12 -e DB_HOST=postgresqldb -e DB_PORT=5432 -e DB_NAME=postgres http-server:v1
+docker run -d -p 8085:8085 --name http-server-golang -e DB_USER=username -e DB_PASS=password -e DB_HOST=postgresqldb -e DB_PORT=5432 -e DB_NAME=postgres http-server:v1
 
 //GET List student
 curl --location 'http://localhost:8085/students' \
